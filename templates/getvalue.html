@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Values</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <h1>Values</h1>
+
+    {{range .}}
+        <div class="panel-card">
+            <h2>{{.Title}}</h2>
+            <p>{{.Description}}</p>
+        </div>
+    {{end}}
+
+    <a href="/">Back to Home</a>
+</body>
+</html>
