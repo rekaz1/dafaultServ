@@ -11,6 +11,13 @@ func (h *Handler) Register(mux *http.ServeMux) {
 	mux.HandleFunc("/getValue", h.GetValue)
 	mux.HandleFunc("/edit", h.CreateEditPage)
 	mux.HandleFunc("/saveEdit", h.Edit)
+
+	//авторизация
+	mux.HandleFunc("/auth/register", h.RegisterPage)
+	mux.HandleFunc("/auth/registerPost", h.RegisterUser)
+	mux.HandleFunc("/auth/login", h.LoginPage)
+	mux.HandleFunc("/auth/loginPost", h.Login)
+
 	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 }
