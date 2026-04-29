@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit panel</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <h1>Редактировать запись</h1>
+
+    <form action="/saveEdit" method="post">
+        <input type="hidden" name="id" value="{{.ID}}">
+
+        <input type="text" name="title" value="{{.Title}}" placeholder="Введите название">
+
+        <textarea name="description" placeholder="Введите описание">{{.Description}}</textarea>
+
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <a href="/getValue">Back to Values</a>
+    <a href="/">Back to Home</a>
+</body>
+</html>

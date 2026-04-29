@@ -7,14 +7,17 @@
 </head>
 
 <body>
-    <h1>Values</h1>
+    <h1>Tikets</h1>
 
     {{range .}}
-        <div class="panel-card">
-            <h2>{{.Title}}</h2>
-            <p>{{.Description}}</p>
-        </div>
+    <div class="panel-card">
+        <h2>{{.Title}}</h2>
+        <p>{{.Description}}</p>
+
+        <a href="/edit?id={{.ID}}">Редактировать</a>
+    </div>
     {{end}}
+
 
     <a href="/">Back to Home</a>
 </body>

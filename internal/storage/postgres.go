@@ -23,6 +23,27 @@ func (s *Storage) Close() {
 	s.DB.Close()
 }
 
+func (s *Storage) GetPanelByID(ctx context.Context, id int) (models.Panel, error) {
+	var panel models.Panel
+	err := s.DB.QueryRow(
+		ctx,
+		"SELECT id, title, description FROM panels WHERE id = $1",
+		id,
+	).Scan(&panel.ID, &panel.Title, &panel.Description)
+	return panel, err
+}
+
+func (s *Storage) EditPanel(ctx context.Context, id int, title string, description string) error {
+	_, err := s.DB.Exec(
+		ctx,
+		"UPDATE panels SET title = $1, description = $2 WHERE id = $3",
+		title,
+		description,
+		id,
+	)
+	return err
+}
+
 func (s *Storage) CreatePanel(ctx context.Context, title string, description string) error {
 	_, err := s.DB.Exec(
 		ctx,
